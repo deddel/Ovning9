@@ -1,7 +1,7 @@
 
-// Check if a number from 1 to N is divisible by 3, 4, 3 and for.
+// Check if a number from 1 to N is divisible by 3, 4 or 3 and 4.
 
-function bishBosh(N, bish, bosh) {
+function bishBosh(N=100, bish=3, bosh=4) {
 
   for (let i = 1; i <= N; i++)
   {
