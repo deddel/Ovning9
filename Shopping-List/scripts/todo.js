@@ -1,6 +1,7 @@
 const inpForm = document.querySelector("#inputForm")
 const ul = document.querySelector("#list")
 
+
 inpForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const item = document.querySelector('#listItem').value
@@ -17,26 +18,35 @@ inpForm.addEventListener('submit', function (event) {
         ul.appendChild(list)
     }
 }
-
-
 )
 
 ul.addEventListener('click', function (event) {
     event.preventDefault();
-    let itemTarget = event.target
-    let itemText = itemTarget.innerText
-    // console.log(itemText)
-    // console.log(itemTarget);
-    // console.log(itemTarget.outerHTML)
-    itemTarget.outerHTML = `<li style="background-color: #00ff00">
-                            <s>${itemText}</s></li>`
-})
+    let boolDblClick = false
+    if (event.detail === 2){
+        console.log(event.target.outerHTML);
+        console.log(event.target.innerHTML);
+        console.log(event.target.parentNode);
+        event.target.outerHTML = ``
+        boolDblClick = true;
+        return
+    }
+    setTimeout( function () {
+        if (event.detail === 1 && !boolDblClick) {
+            event.preventDefault();
+            let itemTarget = event.target
+            let itemText = itemTarget.innerText
+            let oHTML = event.target.outerHTML
+            let toggle = oHTML.includes('style')
+            if (toggle){
+                event.target.outerHTML = `<li>${itemText}</li>` 
+            }
+            else {
+                event.target.outerHTML = `<li style="background-color: #00ff00"><s>${itemText}</s></li>`
+            }
+            return
+            }
+    }, 400)
+  })
 
-//TODO Doubble click to remove, not functional yet 
-// ul.addEventListener('dblclick', function (event) {
-//     event.preventDefault();
-//     console.log('doubble click');
-    // event.target.remove()
-    // let itemTarget = event.target
-// })
 
