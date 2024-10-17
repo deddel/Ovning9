@@ -1,19 +1,19 @@
 const inpForm = document.querySelector("#inputForm")
-const ul = document.querySelector("#lista")
+const ul = document.querySelector("#list")
 
 inpForm.addEventListener('submit',function(event)
 {
     event.preventDefault();
-    const task = document.querySelector('#todoTask').value
-    if (task.trim().length === 0){
+    const item = document.querySelector('#listItem').value
+    if (item.trim().length === 0){
         console.log('empty string');
     }
-    else if (task === null){
+    else if (item === null){
         console.log('null string');
     }
     else {
         const list = document.createElement('li')
-        const text = document.createTextNode(task)
+        const text = document.createTextNode(item)
         list.appendChild(text)
         ul.appendChild(list)
     }
