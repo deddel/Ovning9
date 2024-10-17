@@ -25,9 +25,6 @@ ul.addEventListener('click', function (event) {
     let toggle = event.target.outerHTML.includes('<s>')
     if (event.detail === 2) {
         event.preventDefault();
-        // let toggle = event.target.outerHTML.includes('<s>')
-        console.log('DblClick' + event.target.outerHTML);
-        console.log('DblClick' + event.target.innerHTML);
         if (toggle) {
             if (!event.target.outerHTML.includes('style')) {
                 event.target.parentElement.outerHTML = ``
